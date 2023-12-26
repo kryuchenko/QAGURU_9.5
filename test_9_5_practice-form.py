@@ -1,6 +1,5 @@
-from selene import browser, have, be
+from selene import browser, have, be, command
 import os
-import pytest
 from selene.support.shared import browser
 
 
@@ -37,9 +36,9 @@ def test_form_complete():
 
     # Выбор штата и города из выпадающих списков
     browser.element('#state').click()
-    browser.element('#react-select-3-option-3').click()  # Штат: Раджастан
+    browser.element('#react-select-3-option-3').perform(command.js.click)
     browser.element('#city').click()
-    browser.element('#react-select-4-option-1').click()  # Город: Джайсалмер
+    browser.element('#react-select-4-option-1').perform(command.js.click)  # Город: Джайсалмер
 
     # Отправка заполненной формы
     browser.element('#submit').click()
